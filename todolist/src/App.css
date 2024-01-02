@@ -1,3 +1,6 @@
-li.on{
-  text-decoration: line-through;
+.App{
+  height: 100vh;
+  padding: 50px 10px; 
+  background-color: #a3b18a;
+  box-sizing: border-box;
 }

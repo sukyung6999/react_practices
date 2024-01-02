@@ -1,0 +1,79 @@
+.wrap_todo{
+  max-width: 640px;
+  min-width: 300px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #222;
+  font-size: 18px;
+}
+
+.form_todo{
+  padding: 10px 0;
+  border-bottom: 3px solid rgba(52, 78, 65, 0.4);
+  font-size: 18px;
+}
+.form_todo div{
+  display: flex;
+  padding: 5px;
+}
+.form_todo label{
+  display: inline-block;
+  min-width: 100px;
+}
+.form_todo input{
+  flex-grow: 1;
+  background-color: #dad7cd;
+  border-radius: 4px;
+  border: none;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.form_todo button{
+  display: block;
+  width: 100%;
+  margin: 20px 0 10px;
+  padding: 10px 0;
+  border-radius: 15px;
+  border: none;
+  background-color: #588157;
+  color: #fff;
+  font-size: 20px;
+}
+
+.list_todo {
+  margin: 20px 0 0;
+  padding: 0;
+}
+.list_todo li{ 
+  display: flex;
+  padding: 10px;
+  background-color: #a3b18a;
+  border-radius: 5px;
+  list-style: none;
+}
+.list_todo li.on{
+  background-color: rgba(52, 78, 65, .7);
+  text-decoration: line-through;
+}
+.list_todo .tit_txt{
+  display: inline-block;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.list_todo label.tit_txt{
+  display: none;
+}
+.list_todo .box_input{
+  margin-left: auto;
+}
+.list_todo li + li{
+  margin-top: 10px;
+}
+.list_todo div{
+  margin-right: 20px;
+}
