@@ -1,13 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 
 function Home() {
+
+  const completedChangeHandler = (event) => {
+    const updateTarget = todos.map(todo => {
+      if (+todo.id === +event.target.id) {
+        return {
+          ...todo,
+          completed: event.target.checked
+        }
+      } else {
+        return todo
+      }
+    });
+
+    setTodos(updateTarget)
+  }
+
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     const initialTodos = JSON.parse(localStorage.getItem('todoList'));
 
     if (initialTodos) {
-      setTodos(initialTodos);
+      setTodos(initialTodos.filter(todo => !todo.completed));
     }
   }, [])
 
@@ -42,19 +58,7 @@ function Home() {
   }
   useEffect(() => {
     localStorage.setItem('todoList', JSON.stringify(todos));
-  }, [todos])
-
-  const completedChangeHandler = (event) => {
-    const target = todos.filter(todo => +todo.id === +event.target.id);
-    const {id, title, username} = target;
-
-    // setTodos(prev => {
-    //   return [...prev, {
-    //     id, title, username,
-    //     completed: event.target.value
-    //   }]
-    // })
-  }
+  }, [todos]);
 
   const usernameInput = useRef();
   const titleInput = useRef();
@@ -86,7 +90,7 @@ function Home() {
     </form>
     <ul>
       {
-        todos.map(todo => <li key={`key${todo.id}`}>
+        todos.map(todo => <li key={`key${todo.id}`} className={todo.completed ? 'on' : null}>
           유저 : {todo.username} /
           할일 : {todo.title} /
           <label htmlFor={todo.id}>완료여부</label> : <input id={todo.id} type="checkbox" onChange={completedChangeHandler} /> 
