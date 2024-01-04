@@ -11,13 +11,6 @@ function New() {
     title: ''
   });
 
-  const inputChangeHandler = (event) => {
-    setUserInfo(prev => {
-      return {
-        ...prev,
-        [event.target.id]: event.target.value
-      }
-    })
   }
 
   const onSubmit = (event) => {
@@ -28,11 +21,13 @@ function New() {
     onCreate(userInfo.name, userInfo.title);
     
     console.log('후');
+
     setUserInfo({
       name: '',
       title: ''
     })
   }
+  
   return <form onSubmit={onSubmit}>
     <div>
       <label htmlFor="name">유저이름</label>
@@ -45,5 +40,6 @@ function New() {
     {/* <Button type="submit">저장하기</Button> */}
     <button>저장하기</button>
   </form>
+
 }
 export default New;
