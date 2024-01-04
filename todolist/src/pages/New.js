@@ -1,61 +1,45 @@
-import {useContext, useState} from 'react';
+import { useContext, useRef, useState } from "react";
+import Button from "../components/Button";
+import { DispatchesContext } from "../App";
 
-import Button from '../components/Button';
+function New() {
 
-import uuid from 'react-uuid';
-import { TodosContext } from '../App';
-
-function New({
-  // setTodos
-}) {
-
-  const [todos, setTodos] = useContext(TodosContext);
+  const {onCreate} = useContext(DispatchesContext);
 
   const [userInfo, setUserInfo] = useState({
     name: '',
     title: ''
   });
-  
-  const inputChangeHandler = (event) => {
-    setUserInfo(prev => {
-      return {
-        ...prev,
-        [event.target.id]: event.target.value
-      }
-    })
-  };
 
-  const formSubmitHandler = (event) => {
+  }
+
+  const onSubmit = (event) => {
     event.preventDefault();
 
-    const newUserInfo = {
-      id: uuid(),
-      ...userInfo
-    }
-
-    setTodos(prev => [...prev, newUserInfo]);
-
-    localStorage.setItem('todos', JSON.stringify(todos));
+    console.log('전');
+    
+    onCreate(userInfo.name, userInfo.title);
+    
+    console.log('후');
 
     setUserInfo({
       name: '',
       title: ''
     })
   }
+  
+  return <form onSubmit={onSubmit}>
+    <div>
+      <label htmlFor="name">유저이름</label>
+      <input type="text" id="name" value={userInfo.name} onChange={inputChangeHandler} autoComplete="off"/>
+    </div>
+    <div>
+      <label htmlFor="title">할일제목</label>
+      <input type="text" id="title" value={userInfo.title} onChange={inputChangeHandler} autoComplete="off"/>
+    </div>
+    {/* <Button type="submit">저장하기</Button> */}
+    <button>저장하기</button>
+  </form>
 
-
-  return <div>
-    <form onSubmit={formSubmitHandler}>
-      <div>
-        <label htmlFor="name">유저이름</label>
-        <input type="text" id="name" value={userInfo.name} onChange={inputChangeHandler} />
-      </div>
-      <div>
-        <label htmlFor="title">할일제목</label>
-        <input type="text" id="title" value={userInfo.title} onChange={inputChangeHandler} />
-      </div>
-      <Button type="submit">저장하기</Button>
-    </form>
-  </div>
 }
 export default New;

@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
-import New from "./New";
-import List from "./List";
+import { useContext } from "react";
+import {useNavigate} from 'react-router-dom';
+
+import { TodosContext } from "../App";
+import List from "../components/User/List";
+import Button from "../components/Button";
 
 function Home() {
-  const [todos, setTodos] = useState([]);
+  const todos = useContext(TodosContext);
 
-  useEffect(() => {
-    const initialData = JSON.parse(localStorage.getItem('todos'));
+  const navigate = useNavigate();
 
-    setTodos(initialData);
-  }, [])
-
-  
   return <div>
+    <Button onClick={() => {navigate('/new')}}>할일 만들기</Button>
     <List todos={todos}/>
   </div>
 }
