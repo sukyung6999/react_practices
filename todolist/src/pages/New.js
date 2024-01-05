@@ -1,45 +1,17 @@
-import { useContext, useRef, useState } from "react";
+import {useNavigate} from 'react-router-dom';
+
 import Button from "../components/Button";
-import { DispatchesContext } from "../App";
+import Header from "../components/Header";
+import Form from "../components/User/Form";
 
 function New() {
+  const navigate = useNavigate();
 
-  const {onCreate} = useContext(DispatchesContext);
+  const goToBack = <Button onClick={() => navigate(-1, {replace: true})}>뒤로가기</Button>
 
-  const [userInfo, setUserInfo] = useState({
-    name: '',
-    title: ''
-  });
-
-  }
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    console.log('전');
-    
-    onCreate(userInfo.name, userInfo.title);
-    
-    console.log('후');
-
-    setUserInfo({
-      name: '',
-      title: ''
-    })
-  }
-  
-  return <form onSubmit={onSubmit}>
-    <div>
-      <label htmlFor="name">유저이름</label>
-      <input type="text" id="name" value={userInfo.name} onChange={inputChangeHandler} autoComplete="off"/>
-    </div>
-    <div>
-      <label htmlFor="title">할일제목</label>
-      <input type="text" id="title" value={userInfo.title} onChange={inputChangeHandler} autoComplete="off"/>
-    </div>
-    {/* <Button type="submit">저장하기</Button> */}
-    <button>저장하기</button>
-  </form>
-
+  return <>
+    <Header onLeft={goToBack} >할일 만들기</Header>
+    <Form />
+  </>
 }
 export default New;
