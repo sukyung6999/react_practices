@@ -12,7 +12,7 @@ function Home() {
 
   return <div>
     <Button onClick={() => {navigate('/new')}}>할일 만들기</Button>
-    <List todos={todos}/>
+    { todos && <List todos={todos}/>}
   </div>
 }
 export default Home;
