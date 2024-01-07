@@ -17,7 +17,7 @@ function Edit() {
   useEffect(() => {
     const data = todos.filter(todo => todo.id === id);
     setOriginData(...data);
-  }, [])
+  }, [todos])
 
   const goToBack = <Button onClick={() => navigate(-1, {replace: true})}>뒤로가기</Button>;
 
