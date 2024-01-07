@@ -48,28 +48,27 @@ function Form({
   
   useEffect(() => {
     if (isEdit) {
-      // setUserInfo(...originData)
+      setUserInfo(originData);
       console.log(originData)
     }
 
-  }, []);
-  // console.log(userInfo);
+  }, [isEdit, originData]);
 
 
   const onDeleteTodo = () => {
     onDelete(id);
-    console.log(id);
+    
     navigate('/', {replace: true})
   }
 
   return <form onSubmit={onSubmit}>
   <div>
     <label htmlFor="name">유저이름</label>
-    <input type="text" id="name" value={userInfo.name} onChange={inputChangeHandler} autoComplete="off"/>
+    <input type="text" id="name" value={userInfo.name || ''} onChange={inputChangeHandler}/>
   </div>
   <div>
     <label htmlFor="title">할일제목</label>
-    <input type="text" id="title" value={userInfo.title} onChange={inputChangeHandler} autoComplete="off"/>
+    <input type="text" id="title" value={userInfo.title || ''} onChange={inputChangeHandler}/>
   </div>
   <Button type="submit">저장하기</Button>
   {isEdit && <Button onClick={onDeleteTodo}>삭제하기</Button>}
