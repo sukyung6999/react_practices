@@ -13,17 +13,18 @@ function Edit() {
   const {id} = useParams();
 
   const [originData, setOriginData] = useState([]);
-
+  
   useEffect(() => {
     const data = todos.filter(todo => todo.id === id);
     setOriginData(...data);
-  }, [todos])
+  }, [todos,id]);
+  console.log(originData, '저에요');
 
   const goToBack = <Button onClick={() => navigate(-1, {replace: true})}>뒤로가기</Button>;
 
   return <div>
     <Header onLeft={goToBack}>수정하기</Header>
-    <Form isEdit={true} originData={originData} />
+    <Form isEdit={true} originData={originData || []} />
   </div>
 }
 export default Edit;
