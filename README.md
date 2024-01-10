@@ -2,7 +2,7 @@
 
 ## todolist
 : 할 일 만들기 (CRUD)
-![화면-기록-2024-01-10-오후-9 32 35](https://github.com/sukyung6999/react_practices/assets/77086339/e5c35352-8291-4b1b-8a63-d774b02f9d3e)
+https://github.com/sukyung6999/react_practices/assets/77086339/5011e470-dbf2-4e2b-900c-da75c63d4c4d
 <details>
   <summary>홈</summary>
   <div markdown="1">
