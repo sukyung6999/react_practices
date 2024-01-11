@@ -1,6 +1,4 @@
-# react_practices
-
-## todolist
+# todolist
 : 할 일 만들기 (CRUD)
 ![화면-기록-2024-01-10-오후-9 44 28](https://github.com/sukyung6999/react_practices/assets/77086339/f2d97509-f27f-4de2-946a-b78bba92dae4)
 <details>
