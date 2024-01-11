@@ -1,30 +1,35 @@
-import {useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom";
 
-import Button from "../components/Button";
+import StyledButton from "../components/StyledButton";
 import Header from "../components/Header";
 import Form from "../components/User/Form";
-import { useContext, useEffect, useState } from 'react';
-import { TodosContext } from '../App';
+import { useContext, useEffect, useState } from "react";
+import { TodosContext } from "../App";
 
 function Edit() {
   const todos = useContext(TodosContext);
 
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
 
   const [originData, setOriginData] = useState([]);
-  
+
   useEffect(() => {
-    const data = todos.filter(todo => todo.id === id);
+    const data = todos.filter((todo) => todo.id === id);
     setOriginData(...data);
-  }, [todos,id]);
-  console.log(originData, '저에요');
+  }, [todos, id]);
 
-  const goToBack = <Button onClick={() => navigate(-1, {replace: true})}>뒤로가기</Button>;
+  const goToBack = (
+    <StyledButton onClick={() => navigate(-1, { replace: true })}>
+      뒤로가기
+    </StyledButton>
+  );
 
-  return <div>
-    <Header onLeft={goToBack}>수정하기</Header>
-    <Form isEdit={true} originData={originData || []} />
-  </div>
+  return (
+    <>
+      <Header onLeft={goToBack}>수정하기</Header>
+      <Form isEdit={true} originData={originData || []} />
+    </>
+  );
 }
 export default Edit;

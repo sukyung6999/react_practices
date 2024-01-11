@@ -1,9 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 import { DispatchesContext } from "../../App";
 
-import Button from "../Button";
+import StyledButton from "../StyledButton";
+import Wrapper from "../Wrapper";
 
 function Form({ isEdit, originData }) {
   const navigate = useNavigate();
@@ -44,10 +48,7 @@ function Form({ isEdit, originData }) {
 
   useEffect(() => {
     if (isEdit) {
-      setUserInfo({
-        name: originData.name,
-        title: originData.title
-      });
+      setUserInfo(originData);
     }
   }, [isEdit, originData]);
 
@@ -58,28 +59,35 @@ function Form({ isEdit, originData }) {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        <label htmlFor="name">유저이름</label>
-        <input
-          type="text"
-          id="name"
-          value={userInfo.name || ''}
-          onChange={inputChangeHandler}
-        />
-      </div>
-      <div>
-        <label htmlFor="title">할일제목</label>
-        <input
-          type="text"
-          id="title"
-          value={userInfo.title || ''}
-          onChange={inputChangeHandler}
-        />
-      </div>
-      <Button type="submit">저장하기</Button>
-      {isEdit && <Button onClick={onDeleteTodo}>삭제하기</Button>}
-    </form>
+      <Wrapper>
+        <Box
+         onSubmit={onSubmit}
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '100%' },
+        }}
+        noValidate
+        autoComplete="off"
+            >
+        <div>
+          <label htmlFor="name"></label>
+          <TextField type="text"
+            fullWidth="true"
+            id="name"
+            value={userInfo.name || ""}
+            onChange={inputChangeHandler} label="유저이름" variant="filled" />
+        </div>
+        <div>
+          <TextField type="text"
+            fullWidth="true"
+            id="title"
+            value={userInfo.title || ""}
+            onChange={inputChangeHandler} label="할일제목" variant="filled" />
+        </div>
+        <StyledButton type="submit">저장하기</StyledButton>
+        {isEdit && <StyledButton onClick={onDeleteTodo} variant={'outlined'}>삭제하기</StyledButton>}
+        </Box>
+      </Wrapper>
   );
 }
 export default Form;

@@ -1,22 +1,44 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button";
+import StyledButton from "../StyledButton";
 
-function List({ todos }) {
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import Divider from "@mui/material/Divider";
+import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
+
+function UserList({ todos }) {
   const navigate = useNavigate();
 
   return (
-    <ul>
+    <List sx={{ width: "100%", maxWidth: 640, bgcolor: "background.paper" }}>
       {todos.map((todo) => (
-          <li key={todo.id}>
-            <span>이름 : {todo.name}</span>
-            <span>할일 : {todo.title}</span>
-            <Button onClick={() => navigate(`/edit/${todo.id}`)}>
+        <React.Fragment key={todo.id}>
+          <ListItem alignItems="flex-start">
+            <ListItemText
+              primary={<span>이름 : {todo.name}</span>}
+              secondary={
+                <>
+                  <Typography
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  ></Typography>
+                  <span>할일 : {todo.title}</span>
+                </>
+              }
+            />
+            <StyledButton onClick={() => navigate(`/edit/${todo.id}`)}>
               수정하기
-            </Button>
-          </li>
-        ))}
-    </ul>
+            </StyledButton>
+          </ListItem>
+          <Divider variant="fullWidth" component="li" />
+        </React.Fragment>
+      ))}
+    </List>
   );
 }
 
-export default List;
+export default UserList;

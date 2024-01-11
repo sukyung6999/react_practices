@@ -1,5 +1,7 @@
+import './Header.css';
+
 function Header(props) {
-  return <header>
+  return <header className="header">
     {props.onLeft}
     {props.children}
   </header>
