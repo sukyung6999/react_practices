@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { TodosContext } from "../App";
 import Wrapper from "../components/Wrapper";
 import UserList from "../components/User/List";
-import DefaultButton from "../components/DefaultButton";
+import StyledButton from "../components/StyledButton";
 
 function Home() {
   const todos = useContext(TodosContext);
@@ -13,14 +13,14 @@ function Home() {
 
   return (
     <Wrapper>
-      <DefaultButton
-        classNames={'btn_add'}
+      <StyledButton
+        classNames={"btn_add"}
         onClick={() => {
           navigate("/new");
         }}
       >
         할일 만들기
-      </DefaultButton>
+      </StyledButton>
       {todos && <UserList todos={todos} />}
     </Wrapper>
   );

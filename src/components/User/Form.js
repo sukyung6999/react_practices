@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 import { DispatchesContext } from "../../App";
 
-import DefaultButton from "../DefaultButton";
+import StyledButton from "../StyledButton";
 import Wrapper from "../Wrapper";
 
 function Form({ isEdit, originData }) {
@@ -83,8 +84,8 @@ function Form({ isEdit, originData }) {
             value={userInfo.title || ""}
             onChange={inputChangeHandler} label="할일제목" variant="filled" />
         </div>
-        <DefaultButton type="submit">저장하기</DefaultButton>
-        {isEdit && <DefaultButton onClick={onDeleteTodo} variant={'outlined'}>삭제하기</DefaultButton>}
+        <StyledButton type="submit">저장하기</StyledButton>
+        {isEdit && <StyledButton onClick={onDeleteTodo} variant={'outlined'}>삭제하기</StyledButton>}
         </Box>
       </Wrapper>
   );

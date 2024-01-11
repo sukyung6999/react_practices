@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import DefaultButton from "../DefaultButton";
+import StyledButton from "../StyledButton";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -30,7 +30,9 @@ function UserList({ todos }) {
                 </>
               }
             />
-            <DefaultButton onClick={() => navigate(`/edit/${todo.id}`)}>수정하기</DefaultButton>
+            <StyledButton onClick={() => navigate(`/edit/${todo.id}`)}>
+              수정하기
+            </StyledButton>
           </ListItem>
           <Divider variant="fullWidth" component="li" />
         </React.Fragment>

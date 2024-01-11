@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
-import DefaultButton from "../components/DefaultButton";
+import StyledButton from "../components/StyledButton";
 import Header from "../components/Header";
 import Form from "../components/User/Form";
 import { useContext, useEffect, useState } from "react";
@@ -20,7 +20,9 @@ function Edit() {
   }, [todos, id]);
 
   const goToBack = (
-    <DefaultButton onClick={() => navigate(-1, { replace: true })}>뒤로가기</DefaultButton>
+    <StyledButton onClick={() => navigate(-1, { replace: true })}>
+      뒤로가기
+    </StyledButton>
   );
 
   return (
