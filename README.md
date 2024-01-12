@@ -1,6 +1,14 @@
 # todolist
-: 할 일 만들기 (CRUD)
+: 할 일 만들기 
 ![화면-기록-2024-01-10-오후-9 44 28](https://github.com/sukyung6999/react_practices/assets/77086339/f2d97509-f27f-4de2-946a-b78bba92dae4)
+
+<ol>
+  <li>create-react-app으로 생성</li>
+  <li>css : MUI 사용</li>
+  <li>할일 생성 / 수정 / 삭제 가능</li>
+  <li>생성된 할일은 localStorage에 저장되며, 홈 화면에서 새로고침시 저장된 데이터를 불러옴 </li>
+</ol>
+
 <details>
   <summary>홈</summary>
   <img width="920" alt="home화면" src="https://github.com/sukyung6999/react_practices/assets/77086339/f562460c-3f77-4893-bbbf-d07706613cbb">
